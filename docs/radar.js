@@ -42,7 +42,6 @@ function radar_visualization(config) {
     { x: 450, y: -310 }
   ]
   config.title_offset = config.title_offset || { x: -675, y: -420 };
-  config.footer_offset = config.footer_offset || { x: -155, y: 450 };
   config.legend_column_width = config.legend_column_width || 140
   config.legend_line_height = config.legend_line_height || 10
 
@@ -74,7 +73,7 @@ function radar_visualization(config) {
     { radius: 130 },
     { radius: 220 },
     { radius: 310 },
-    { radius: 400 }
+    { radius: 310 }
   ];
 
   function polar(cartesian) {
@@ -225,13 +224,13 @@ function radar_visualization(config) {
 
   // draw grid lines
   grid.append("line")
-    .attr("x1", 0).attr("y1", -400)
-    .attr("x2", 0).attr("y2", 400)
+    .attr("x1", 0).attr("y1", -310)
+    .attr("x2", 0).attr("y2", 310)
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
   grid.append("line")
-    .attr("x1", -400).attr("y1", 0)
-    .attr("x2", 400).attr("y2", 0)
+    .attr("x1", -310).attr("y1", 0)
+    .attr("x2", 310).attr("y2", 0)
     .style("stroke", config.colors.grid)
     .style("stroke-width", 1);
 
@@ -308,14 +307,6 @@ function radar_visualization(config) {
       .style("font-family", config.font_family)
       .style("font-size", "14")
       .style("fill", "#999")
-
-    // footer
-    radar.append("text")
-      .attr("transform", translate(config.footer_offset.x, config.footer_offset.y))
-      .text("▲ moved up     ▼ moved down     ★ new     ⬤ no change")
-      .attr("xml:space", "preserve")
-      .style("font-family", config.font_family)
-      .style("font-size", "12px");
 
     // legend
     const legend = radar.append("g");
