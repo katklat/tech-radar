@@ -16,76 +16,69 @@
 </head>
 
 <body>
+    <section>
+        <svg id="radar"></svg>
 
-    <svg id="radar"></svg>
-
-    <script>
-        fetch('./config.json').then(function (response) {
-            return response.json();
-        }).then(function (data) {
-            radar_visualization({
-                repo_url: "https://github.com/katklat/tech-radar",
-                title: "My Tech Radar",
-                date: data.date,
-                colors: {
-                    background: "#f1faee",
-                    grid: '#dddde0',
-                    inactive: "#ddd"
-                },
-                quadrants: [
-                    { name: "Data Analysis & Visualization" },
-                    { name: "DevOps, Monitoring & Collaboration" },
-                    { name: "Data Engineering & Infrastructure" },
-                    { name: "Backend & API Development" },
-                ],
-                rings: [
-                    { name: "CORE", color: "#e63946" },
-                    { name: "ADOPTING", color: "#457b9d" },
-                    { name: "EXPLORING", color: "#0a9396" },
-                    { name: "", color: "#c7ba00" }
-                ],
-                entries: data.entries
+        <script>
+            fetch('./config.json').then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                radar_visualization({
+                    repo_url: "https://github.com/katklat/tech-radar",
+                    title: "My Tech Radar",
+                    date: data.date,
+                    colors: {
+                        background: "#f1faee",
+                        grid: '#dddde0',
+                        inactive: "#ddd"
+                    },
+                    quadrants: [
+                        { name: "Data Analysis, Machine Learning & AI" },
+                        { name: "DevOps, Monitoring & Collaboration" },
+                        { name: "Data Engineering & Infrastructure" },
+                        { name: "Backend & API Development" },
+                    ],
+                    rings: [
+                        { name: "CORE", color: "#e63946" },
+                        { name: "ADOPTING", color: "#457b9d" },
+                        { name: "EXPLORING", color: "#0a9396" },
+                        { name: "", color: "#c7ba00" }
+                    ],
+                    entries: data.entries
+                });
+            }).catch(function (err) {
+                console.log('Error loading config.json', err);
             });
-        }).catch(function (err) {
-            console.log('Error loading config.json', err);
-        });
-    </script>
+        </script>
+    </section>
 
-    <table>
-        <tr>
-            <td>
+    <div class="legend">
+        <h3>Legend</h3>
 
-                <h3>Legend</h3>
+        <ul>
+            <strong>CORE</strong> &mdash; Technologies I am confortable with and have experience with.<br>
+            <strong>ADOPTING</strong> &mdash; Technologies I have used for personal projects.<br>
+            <strong>EXPLORING</strong> &mdash; Technologies I am curious about and would like to work with.<br>
+        </ul>
 
-                <ul>
-                    <strong>CORE</strong> &mdash; Technologies I am confortable with and have experience with.<br>
-                    <strong>ADOPTING</strong> &mdash; Technologies I have used for personal projects.<br>
-                    <strong>EXPLORING</strong> &mdash; Technologies I am curious about and would like to work with.<br>
-                </ul>
+        <h3>Purpose</h3>
 
-            </td>
-            <td>
+        <p>
+            This Tech Radar is by no means an assessment of the current market, but rather a graphical
+            representation
+            of my experience and ambitions. Because I prefer graphs to bullet points.
 
-                <h3>Purpose</h3>
+        </p>
 
-                <p>
-                    This Tech Radar is by no means an assessment of the current market, but rather a graphical
-                    representation
-                    of my experience and ambitions. Because I prefer graphs to bullet points.
+        <h3>Credits</h3>
 
-                </p>
-
-                <h3>Credits</h3>
-
-                <p>
-                    This visualization is based on the <a href="https://www.thoughtworks.com/radar">Tech Radar</a>
-                    pioneered by ThoughtWorks and the open source project <a
-                        href="https://github.com/zalando/tech-radar">Zalando Tech Radar</a>.
-                </p>
-            </td>
-        </tr>
-    </table>
-
+        <p>
+            This visualization is based on the <a href="https://www.thoughtworks.com/radar">Tech Radar</a>
+            pioneered by ThoughtWorks and the open source project <a
+                href="https://github.com/zalando/tech-radar">Zalando
+                Tech Radar</a>.
+        </p>
+    </div>
 </body>
 
 </html>
